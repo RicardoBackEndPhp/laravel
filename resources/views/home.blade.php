@@ -1,9 +1,4 @@
-<h5>Dados do usuário</h5>
-<p>
-	Meu nome é {{$nome}} {{$sobrenome}}. <br/>
-	Eu sou {{$profissao}}.
-</p>
-<hr/>
+
 <h5>Tarefas por fazer</h5>
 	@if(count($listando) > 0)
 		<table border="solid 1px black" style="text-align: center; vertical-align: middle;">
@@ -40,3 +35,4 @@
 </form>
 
 <hr/>
+<a href="relatorio"><button>relatório</button></a>

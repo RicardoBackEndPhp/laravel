@@ -24,6 +24,9 @@ Route::get('/delete/{idDel}', 'HomeController@delete');
 //Call controller "home" and action "feito"
 Route::get('/feito/{id}', 'HomeController@feito');
 
+//Call controller "home" and action "feito"
+Route::get('/desfeito/{id}', 'HomeController@desfazer');
+
 
 
 //formas de criar rotas----------------------------------
@@ -39,10 +42,10 @@ Route::get('/msg', function () {
 });
 
 //chamando controller @ action
-Route::get('/homeTeste', 'HomeController@home');
+Route::get('/exemple', 'HomeController@exemple');
 
 //chamando controller @ action em chamdo via post
-Route::post('/homeTeste', 'HomeController@add');
+Route::post('/exemple', 'HomeController@add');
 
 //Usando parâmetros----------------------------------------
 

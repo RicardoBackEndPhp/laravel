@@ -2,34 +2,24 @@
 //diretório desse arquivo
 namespace App\Http\Controllers;
 
-//puxando classe Controller para extender
+//pull class Controller to extends
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-//puxando model
+//pull model
 use App\Lista;
 
 class HomeController extends Controller
 {
 	public function home()
 	{
-		//Array de envio de dados para a view
-		$dados = array(
-			'nome' => 'Ricardo', 
-			'sobrenome' => 'Oliveira',
-			'profissao' => 'programador'
-		);
-
-		//pegando todos valores da tabela
+		//get all values of the table
 		$dados['listando'] = Lista::where('feito','0')->get();
 
 		return view('home',$dados); //Call a view
 	}
 
-/////////////////////////////////////////////////////////////////////
-////////////////////// Meus testes no Laravel  //////////////////////
-/////////////////////////////////////////////////////////////////////
 
 	public function add(Request $req) //Class that get data
 	{
@@ -41,7 +31,7 @@ class HomeController extends Controller
 			$praz = $req->input('prazo');
 
 			//test
-			echo "<h1>item: $item e prazo: $praz</h1>";
+			//echo "<h1>item: $item e prazo: $praz</h1>";
 
 			//new object
 			$lista = new Lista;
@@ -57,7 +47,7 @@ class HomeController extends Controller
 	}
 
 
-	//Pull all the data
+	//Pull all the data in table "Lista"
 	public function todas()
 	{
 		//Array of send of data to "view"
@@ -74,7 +64,7 @@ class HomeController extends Controller
 	}
 
 	//Pull only data where field "feito" is equal the 1
-	public function home2()
+	public function exemple()
 	{
 		//In atribute "where" is necessery use the command ->get()
 
@@ -103,16 +93,29 @@ class HomeController extends Controller
 	//Mark like "faito"
 	public function feito($id)
 	{
+		//find "id" in table "lista"
+		$lista = Lista::find($id);
 
-			//find "id" in table "lista"
-			$lista = Lista::find($id);
+		$lista->feito = 1;
 
-			$lista->feito = 1;
-
-			//Save data in database
-			$lista->save();
+		//Save data in database
+		$lista->save();
 
 		return redirect('/');
+	}
+
+	//Mark like "defeito"
+	public function desfazer($id)
+	{
+		//find "id" in table "lista"
+		$lista = Lista::find($id);
+
+		$lista->feito = 0;
+
+		//Save data in database
+		$lista->save();
+
+		return redirect('/relatorio');
 	}
 
 	//Update tasks in database

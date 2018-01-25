@@ -6,6 +6,7 @@
 				<th>Tarefa</th>
 				<th>Prazo</th>
 				<th>Feito</th>
+				<th>Desfazer</th>
 				<th>Excluir</th>
 			</tr>
 		@foreach($listando as $item)
@@ -21,6 +22,7 @@
 						não
 					@endif
 				</td>
+				<td><a href="desfeito/{{$item->id}}">OK</a></td>
 				<td><a href="delete/{{$item->id}}">X</a></td>
 			</tr>	
 		@endforeach
